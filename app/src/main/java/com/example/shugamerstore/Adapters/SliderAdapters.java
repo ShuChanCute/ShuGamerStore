@@ -64,7 +64,7 @@ if(position==sliderItems.size()-2){
              requestOptions=requestOptions.transforms(new CenterCrop(),new RoundedCorners(60));
 
             Glide.with(context)
-                    .load(sliderItems.getImgae())
+                    .load(sliderItems.getImage())
                     .apply(requestOptions)
                     .into(imageView);
 
