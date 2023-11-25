@@ -2,6 +2,7 @@ package com.example.shugamerstore.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
@@ -10,7 +11,10 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ProgressBar;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
 import com.example.shugamerstore.Adapters.SliderAdapters;
 import com.example.shugamerstore.Domain.SliderItems;
 import com.example.shugamerstore.R;
@@ -19,6 +23,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private RecyclerView.Adapter adapterBestMovies,AdapterUpComing,adapterCategory;
+    private RecyclerView recycleViewBestMovies,recyclerviewUpcomming,recycleviewCategory;
+    private RequestQueue mQueue;
+    private StringRequest mStringRequest,mStringRequest2,mSstringRequest3;
+    private ProgressBar loading1,loading2,loading3;
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
 
@@ -39,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
     viewPager2.setAdapter(new SliderAdapters(sliderItems,viewPager2));
     viewPager2.setClipToPadding(false);
+    viewPager2.setClipChildren(false);
     viewPager2.setOffscreenPageLimit(3);
-    viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_ALWAYS);
+    viewPager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
 
 
         CompositePageTransformer compositePageTransformer=new CompositePageTransformer();
@@ -84,5 +94,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
        viewPager2=findViewById(R.id.viewpageSlider);
+       recycleViewBestMovies=findViewById(R.id.view1);
+       recycleViewBestMovies.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+       recyclerviewUpcomming=findViewById(R.id.view2);
+       recyclerviewUpcomming.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+       recycleviewCategory=findViewById(R.id.view3);
+       recycleviewCategory.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
+       loading1=findViewById(R.id.progressBar1);
+        loading2=findViewById(R.id.progressBar2);
+        loading3=findViewById(R.id.progressBar3);
+
+
     }
 }

@@ -61,7 +61,7 @@ if(position==sliderItems.size()-2){
         }
         void setImage(SliderItems sliderItems){
              RequestOptions requestOptions=new RequestOptions();
-             requestOptions=requestOptions.transforms(new CenterCrop(),new RoundedCorners(60));
+             requestOptions=requestOptions.transform(new CenterCrop(),new RoundedCorners(60));
 
             Glide.with(context)
                     .load(sliderItems.getImage())
