@@ -13,8 +13,10 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.shugamerstore.Adapters.SliderAdapters;
 import com.example.shugamerstore.Domain.SliderItems;
 import com.example.shugamerstore.R;
@@ -25,8 +27,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapterBestMovies,AdapterUpComing,adapterCategory;
     private RecyclerView recycleViewBestMovies,recyclerviewUpcomming,recycleviewCategory;
-    private RequestQueue mQueue;
-    private StringRequest mStringRequest,mStringRequest2,mSstringRequest3;
+    private RequestQueue mRequestQueue;
+    private StringRequest nStringRequest,nStringRequest2,nSstringRequest3;
     private ProgressBar loading1,loading2,loading3;
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
@@ -38,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
         banner();
+        sendRequest();
+    }
+
+    private void sendRequest() {
+        mRequestQueue= Volley.newRequestQueue(this);
+        loading1.setVisibility(View.VISIBLE);
+        nStringRequest=new StringRequest(Request.Method.GET,"")
     }
 
     private void banner() {
