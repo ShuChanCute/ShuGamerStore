@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendRequest() {
         mRequestQueue= Volley.newRequestQueue(this);
         loading1.setVisibility(View.VISIBLE);
-        nStringRequest=new StringRequest(Request.Method.GET,"")
+        nStringRequest=new StringRequest(Request.Method.GET,""
     }
 
     private void banner() {
