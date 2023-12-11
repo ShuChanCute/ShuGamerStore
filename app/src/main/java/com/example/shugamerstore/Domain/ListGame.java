@@ -28,7 +28,7 @@ public class ListGame {
         return metadata;
     }
 
-    public void setMetadata(Metadata metadata) {
+    public void setMetadata(Metadata metada) {
         this.metadata = metadata;
     }
 
