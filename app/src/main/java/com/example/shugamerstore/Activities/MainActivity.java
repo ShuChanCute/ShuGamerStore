@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.shugamerstore.Adapters.SliderAdapters;
@@ -46,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
     private void sendRequest() {
         mRequestQueue= Volley.newRequestQueue(this);
         loading1.setVisibility(View.VISIBLE);
-        nStringRequest=new StringRequest(Request.Method.GET,""
+        nStringRequest=new StringRequest(Request.Method.GET,"", new Response.Listener<String>() {
+
+        }
     }
 
     private void banner() {
