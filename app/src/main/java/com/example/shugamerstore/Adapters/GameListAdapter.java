@@ -17,11 +17,12 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.shugamerstore.Activities.DetailActivity;
+import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.ListGame;
 import com.example.shugamerstore.R;
 
 public class GameListAdapter extends RecyclerView.Adapter<GameListAdapter.ViewHolder> {
-    ListGame items;
+    ListFilm items;
     Context context;
 
     public GameListAdapter(ListGame items) {

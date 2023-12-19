@@ -1,10 +1,5 @@
- package com.example.shugamerstore.Domain;
-
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-
+package com.example.shugamerstore.Domain;
+@Generated("jsonschema2pojo")
 public class Metadata {
 
     @SerializedName("current_page")

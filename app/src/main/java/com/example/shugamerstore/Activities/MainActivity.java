@@ -47,9 +47,16 @@ public class MainActivity extends AppCompatActivity {
     private void sendRequest() {
         mRequestQueue= Volley.newRequestQueue(this);
         loading1.setVisibility(View.VISIBLE);
-        nStringRequest=new StringRequest(Request.Method.GET,"", new Response.Listener<String>() {
+        nStringRequest=new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=1", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
 
+            }
+        } new Response.ErrorListener() {
+            @Override
+        public void onErrorResponse()
         }
+
     }
 
     private void banner() {
