@@ -18,15 +18,19 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.shugamerstore.Adapter.CategoryListAdapter;
 import com.example.shugamerstore.Adapter.FilmListAdapter;
 import com.example.shugamerstore.Adapter.SliderAdapters;
 import com.example.shugamerstore.Adapter.FilmListAdapter;
 import com.example.shugamerstore.Adapter.SliderAdapters;
+import com.example.shugamerstore.Domain.Genres;
+import com.example.shugamerstore.Domain.GenresItem;
 import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.SliderItems;
 import com.example.shugamerstore.R;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         banner();
         sendRequestBestMovies();
         sendRequestUpComming();
+        sendRequestCategory();
     }
 
     private void sendRequestBestMovies() {
@@ -81,6 +86,23 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Uilover","onErrorResponse: "+error.toString());
         });
         mRequestQueue.add(mStringRequest3);
+    }
+
+    private void sendRequestCategory() {
+        mRequestQueue=Volley.newRequestQueue(this);
+        loading1.setVisibility(View.VISIBLE);
+        mStringRequest2 = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/genres", response -> {
+            Gson gson= new Gson();
+            loading2.setVisibility(View.GONE);
+            ArrayList<GenresItem> catList=gson.fromJson(response,new TypeToken<ArrayList<GenresItem>>(){
+            }.getType());
+            adapterCategory=new CategoryListAdapter(catList);
+            recycleviewCategory.setAdapter(adapterCategory);
+        }, error -> {
+            loading2.setVisibility(View.GONE);
+            Log.i("Uilover","onErrorResponse: "+error.toString());
+        });
+        mRequestQueue.add(mStringRequest2);
     }
 
 
@@ -140,9 +162,9 @@ public class MainActivity extends AppCompatActivity {
        viewPager2=findViewById(R.id.viewpagerSlider);
        recycleViewBestMovies=findViewById(R.id.view1);
        recycleViewBestMovies.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-       recyclerviewUpcomming=findViewById(R.id.view2);
+       recyclerviewUpcomming=findViewById(R.id.view3);
        recyclerviewUpcomming.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
-       recycleviewCategory=findViewById(R.id.view3);
+       recycleviewCategory=findViewById(R.id.view2);
        recycleviewCategory.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
        loading1=findViewById(R.id.progressBar1);
         loading2=findViewById(R.id.progressBar2);
