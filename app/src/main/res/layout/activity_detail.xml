@@ -9,7 +9,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="-152dp">
+        ">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -22,12 +25,10 @@
                 android:layout_height="400dp"
 
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
@@ -53,6 +54,7 @@
                     android:id="@+id/imageView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/oval_btn_background"
                     android:padding="8dp"
                     android:src="@drawable/fav"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -62,14 +64,14 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
+                android:id="@+id/constraintLayout6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView6">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/movieStar"
@@ -87,6 +89,7 @@
                     android:id="@+id/movieTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:layout_marginStart="8dp"
                     android:drawableStart="@drawable/time"
                     android:drawablePadding="5dp"
@@ -105,12 +108,12 @@
                 android:text="TextView"
                 android:textColor="@color/white"
                 android:textSize="26sp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayout2" />
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout6"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout6" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView4"
+                android:id="@+id/recyclerView5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -119,16 +122,50 @@
                 app:layout_constraintTop_toBottomOf="@id/imageView6" />
 
             <TextView
-                android:id="@+id/textView22"
+                android:id="@+id/textView26"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginTop="16dp"
                 android:text="Summary"
-                android:textColor="#FFEB3B"
-                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:textSize="26sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView4" />
+                app:layout_constraintTop_toBottomOf="@id/recyclerView5"/>
+
+            <TextView
+                android:id="@+id/movieSummary"
+                android:layout_width="40dp"
+                android:layout_height="23dp"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/textView26"
+                app:layout_constraintTop_toBottomOf="@id/textView26"/>
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Actors"
+                android:textColor="@color/orange"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/textView26"
+                app:constraintTop_toBottomsOf="@+id/movieSummary"/>
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/white"
+                app:layout_MarginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/textView30"
+                app:layout_constraintTop_toBottomOf="@+id/textView30"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="textView31"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
