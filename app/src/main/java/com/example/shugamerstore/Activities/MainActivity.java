@@ -8,7 +8,6 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -17,13 +16,12 @@ import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.shugamerstore.Adapters.FilmListAdapter;
-import com.example.shugamerstore.Adapters.SliderAdapters;
-import com.example.shugamerstore.Domain.ListFilm;
+import com.example.shugamerstore.Adapter.SliderAdapters;
+//import com.example.shugamerstore.Adapters.FilmListAdapter;
+//import com.example.shugamerstore.Adapters.SliderAdapters;
+//import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.SliderItems;
 import com.example.shugamerstore.R;
 import com.google.gson.Gson;
@@ -35,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.Adapter adapterBestMovies,AdapterUpComing,adapterCategory;
     private RecyclerView recycleViewBestMovies,recyclerviewUpcomming,recycleviewCategory;
     private RequestQueue mRequestQueue;
-    private StringRequest nStringRequest,nStringRequest2,nSstringRequest3;
+    private StringRequest mStringRequest,mStringRequest2,mStringRequest3;
     private ProgressBar loading1,loading2,loading3;
     private ViewPager2 viewPager2;
     private Handler slideHandler = new Handler();
@@ -56,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         nStringRequest=new StringRequest(Request.Method.GET, "moviesapi.ir/api/v1/movies?page=1", response -> {
             Gson gson= new Gson();
             loading1.setVisibility(View.GONE);
-            ListFilm items = gson.fromJson(response, ListFilm.class);
-            adapterBestMovies=new FilmListAdapter(items);
+     //       ListFilm items = gson.fromJson(response, ListFilm.class);
+      //      adapterBestMovies=new FilmListAdapter(items);
             recycleViewBestMovies.setAdapter(adapterBestMovies);
         }, error -> {
             loading1.setVisibility(View.GONE);
@@ -119,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-       viewPager2=findViewById(R.id.viewpageSlider);
+       viewPager2=findViewById(R.id.viewpagerSlider);
        recycleViewBestMovies=findViewById(R.id.view1);
        recycleViewBestMovies.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
        recyclerviewUpcomming=findViewById(R.id.view2);

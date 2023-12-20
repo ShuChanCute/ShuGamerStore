@@ -1,8 +1,7 @@
-package com.example.shugamerstore.Adapters;
+package com.example.shugamerstore.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.RoundedCorner;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -21,12 +20,12 @@ import com.example.shugamerstore.R;
 import java.util.List;
 
 public class SliderAdapters extends RecyclerView.Adapter<SliderAdapters.SliderViewHolder> {
-    private List<SliderItems> sliderItems;
+    private List<SliderItems> slideItems;
     private ViewPager2 viewPager2;
     private Context context;
 
-    public SliderAdapters(List<SliderItems> sliderItems, ViewPager2 viewPager2) {
-        this.sliderItems = sliderItems;
+    public SliderAdapters(List<SliderItems> slideItems, ViewPager2 viewPager2) {
+        this.slideItems = slideItems;
         this.viewPager2 = viewPager2;
     }
 
@@ -34,23 +33,23 @@ public class SliderAdapters extends RecyclerView.Adapter<SliderAdapters.SliderVi
     @Override
     public SliderAdapters.SliderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context=parent.getContext();
-
         return new SliderViewHolder(LayoutInflater.from(parent.getContext()).inflate(
-                R.layout.slide_item_container,parent, false
+                R.layout.slide_item_container,parent,false
+
         ));
     }
 
     @Override
     public void onBindViewHolder(@NonNull SliderAdapters.SliderViewHolder holder, int position) {
-holder.setImage(sliderItems.get(position));
-if(position==sliderItems.size()-2){
-        viewPager2.post(runalbe);
+holder.setImage(slideItems.get(position));
+if(position==slideItems.size()-2){
+    viewPager2.post(runable);
 }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return slideItems.size();
     }
 
     public class SliderViewHolder extends RecyclerView.ViewHolder{
@@ -60,20 +59,19 @@ if(position==sliderItems.size()-2){
             imageView=itemView.findViewById(R.id.imageSlide);
         }
         void setImage(SliderItems sliderItems){
-             RequestOptions requestOptions=new RequestOptions();
-             requestOptions=requestOptions.transform(new CenterCrop(),new RoundedCorners(60));
+            RequestOptions requestOptions=new RequestOptions();
+            requestOptions=requestOptions.transforms(new CenterCrop(),new RoundedCorners(60));
 
             Glide.with(context)
                     .load(sliderItems.getImage())
                     .apply(requestOptions)
                     .into(imageView);
-
         }
     }
-    private Runnable runalbe= new Runnable() {
+    private Runnable runable=new Runnable() {
         @Override
         public void run() {
-            sliderItems.addAll(sliderItems);
+            slideItems.addAll(slideItems);
             notifyDataSetChanged();
         }
     };
