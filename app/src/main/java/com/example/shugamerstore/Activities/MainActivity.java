@@ -20,9 +20,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.shugamerstore.Adapter.FilmListAdapter;
 import com.example.shugamerstore.Adapter.SliderAdapters;
-//import com.example.shugamerstore.Adapters.FilmListAdapter;
-//import com.example.shugamerstore.Adapters.SliderAdapters;
-//import com.example.shugamerstore.Domain.ListFilm;
+import com.example.shugamerstore.Adapter.FilmListAdapter;
+import com.example.shugamerstore.Adapter.SliderAdapters;
+import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.ListFilm;
 import com.example.shugamerstore.Domain.SliderItems;
 import com.example.shugamerstore.R;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendRequestBestMovies() {
         mRequestQueue=Volley.newRequestQueue(this);
         loading1.setVisibility(View.VISIBLE);
-        mStringRequest=new StringRequest(Request.Method.GET, "moviesapi.ir/api/v1/movies?page=1", response -> {
+        mStringRequest = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=1", response -> {
             Gson gson= new Gson();
             loading1.setVisibility(View.GONE);
          ListFilm items = gson.fromJson(response, ListFilm.class);
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     private void sendRequestUpComming() {
         mRequestQueue=Volley.newRequestQueue(this);
         loading1.setVisibility(View.VISIBLE);
-        mStringRequest3=new StringRequest(Request.Method.GET, "moviesapi.ir/api/v1/movies?page=2", response -> {
+        mStringRequest3 = new StringRequest(Request.Method.GET, "https://moviesapi.ir/api/v1/movies?page=3", response -> {
             Gson gson= new Gson();
             loading3.setVisibility(View.GONE);
             ListFilm items = gson.fromJson(response, ListFilm.class);
