@@ -2,17 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/progressBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_color"
     tools:context=".Activities.DetailActivity">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="-152dp">
-        ">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -20,7 +23,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/picDetail"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
 
@@ -29,6 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="16dp"
@@ -40,9 +44,9 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:id="@+id/backimg"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/oval_btn_background"
                     android:padding="8dp"
                     android:src="@drawable/back"
@@ -60,16 +64,15 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout6"
+                android:id="@+id/constraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintBottom_toBottomOf="@+id/picDetail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -89,7 +92,6 @@
                     android:id="@+id/movieTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
                     android:layout_marginStart="8dp"
                     android:drawableStart="@drawable/time"
                     android:drawablePadding="5dp"
@@ -107,67 +109,84 @@
                 android:layout_marginBottom="16dp"
                 android:text="TextView"
                 android:textColor="@color/white"
-                android:textSize="26sp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout6"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayout6"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayout6" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout2" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView5"
+                android:id="@+id/genreView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/imageView6" />
+                app:layout_constraintTop_toBottomOf="@+id/picDetail" />
 
             <TextView
-                android:id="@+id/textView26"
+                android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
                 android:text="Summary"
                 android:textColor="@color/white"
-                android:textSize="26sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/recyclerView5"/>
+                app:layout_constraintTop_toBottomOf="@+id/genreView" />
 
             <TextView
                 android:id="@+id/movieSummary"
-                android:layout_width="40dp"
-                android:layout_height="23dp"
-                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="test"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@id/textView26"
-                app:layout_constraintTop_toBottomOf="@id/textView26"/>
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
             <TextView
-                android:id="@+id/textView30"
+                android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="Actors"
-                android:textColor="@color/orange"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@+id/textView26"
-                app:constraintTop_toBottomsOf="@+id/movieSummary"/>
+                app:layout_constraintStart_toStartOf="@+id/textView17"
+                app:layout_constraintTop_toBottomOf="@+id/movieSummary" />
 
             <TextView
-                android:id="@+id/textView31"
+                android:id="@+id/movieActorinfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:layout_marginTop="8dp"
+                android:text="Test"
                 android:textColor="@color/white"
-                app:layout_MarginTop="8dp"
-                app:layout_constraintStart_toStartOf="@+id/textView30"
-                app:layout_constraintTop_toBottomOf="@+id/textView30"/>
+                app:layout_constraintStart_toStartOf="@+id/textView20"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/imagesRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="textView31"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/movieActorinfo" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
+    <ProgressBar
+        android:id="@+id/progressBarDetail"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
